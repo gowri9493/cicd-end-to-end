@@ -9,7 +9,7 @@ pipeline {
     stages {
         stage ('checkout') {
             steps {
-                git credentialsId: 'd5be0348-6145-4239-802f-fb1025e25860',
+                git credentialsId: 'aa2316bf-0c06-40c6-921f-9e551ed41f6c',
                 url: 'https://github.com/gowri9493/cicd-end-to-end.git',
                 branch: 'main'
             }
@@ -34,7 +34,7 @@ pipeline {
     
     stage ('Checkout K8S manifest SCM') {
         steps {
-            git credentialsId: 'd5be0348-6145-4239-802f-fb1025e25860',
+            git credentialsId: 'aa2316bf-0c06-40c6-921f-9e551ed41f6c',
             url: 'https://github.com/gowri9493/cicd-demo-manifests-repo.git',
             branch: 'main'
         }
