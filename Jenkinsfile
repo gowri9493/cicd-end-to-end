@@ -3,6 +3,7 @@ pipeline {
 
     environment {
         IMAGE_TAG = "${BUILD_NUMBER}"
+        DOCKERHUB_CREDENTIALS = credentials('dockerhub-credentials-id')
     }
 
     stages {
@@ -23,7 +24,7 @@ pipeline {
     stage ('Push artifacts to registry') {
         steps {
         echo 'Push to repo'
-        docker.withRegistry('https://index.docker.io/v1/', 'dockerhub')
+       docker.withRegistry('https://index.docker.io/v1/', 'dockerhub-credentials-id')
         sh ' docker push gowri9493/cicd-e2e:${BUILD_NUMBER} '
         }
     }
