@@ -13,10 +13,11 @@ pipeline {
                 branch: 'main'
             }
         }
-    }
+    
     stage ('Build Image') {
         steps {
-        echo "Build docker Image"
+        echo 'Build docker Image'
         }
+    }
     }
 }
