@@ -46,6 +46,7 @@ pipeline {
                     usernameVariable: 'GIT_USERNAME' )]) {
                     sh '''
                         cat deploy.yaml
+                        ls -l deploy.yaml
                         sed -i '' 's/32/${IMAGE_TAG}/g' deploy.yaml
                         cat deploy.yaml
                         git add deploy.yaml
