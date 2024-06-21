@@ -7,7 +7,7 @@ pipeline {
     }
 
     stages {
-        stage('Checkout') {
+        stage ('checkout') {
             steps {
                 git credentialsId: '4a313cc0-0775-4139-83df-05384f27d375',
                 url: 'https://github.com/gowri9493/cicd-end-to-end.git',
@@ -15,29 +15,21 @@ pipeline {
             }
         }
     
-        stage('Build Image') {
-            steps {
-                echo 'Building Docker image...'
-                sh 'docker build -t gowri9493/cicd-e2e:${IMAGE_TAG} .'
-            }
+    stage ('Build Image') {
+        steps {
+        echo 'Build docker Image'
+        sh 'docker build -t gowri9493/cicd-e2e:${BUILD_NUMBER} .'
         }
-
-        stage('Push Artifacts to Registry') {
-            steps {
-                script {
-                    docker.withRegistry('https://index.docker.io/v1/', 'dockerhub') {
-                        echo 'Pushing Docker image to repository...'
-                        sh 'docker push gowri9493/cicd-e2e:${IMAGE_TAG}'
-                    }
+    }
+    stage ('Push artifacts to registry') {
+        steps {
+            script {
+                docker.withRegistry('https://index.docker.io/v1/', 'dockerhub') {
+        echo 'Push to repo'
+        sh 'docker push gowri9493/cicd-e2e:${IMAGE_TAG}'
                 }
-            }
+       }
+        }
         }
     }
-    
-    post {
-        always {
-            echo 'Cleaning up...'
-            cleanWs()
-        }
     }
-}
