@@ -23,6 +23,7 @@ pipeline {
     stage ('Push artifacts to registry') {
         steps {
         echo 'Push to repo'
+        docker.withRegistry('https://index.docker.io/v1/', 'dockerhub')
         sh ' docker push gowri9493/cicd-e2e:${BUILD_NUMBER} '
         }
     }
