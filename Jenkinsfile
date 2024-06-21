@@ -15,6 +15,8 @@ pipeline {
         }
     }
     stage ('Build Image') {
+        steps {
         echo "Build docker Image"
+        }
     }
 }
