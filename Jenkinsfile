@@ -25,11 +25,9 @@ pipeline {
         steps {
             script {
         echo 'Push to repo'
-       docker.withRegistry('https://index.docker.io/v1/', 'dockerhub-credentials-id') {
         sh ' docker push gowri9493/cicd-e2e:${BUILD_NUMBER} '
        }
         }
         }
     }
     }
-}
