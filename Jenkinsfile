@@ -31,7 +31,7 @@ pipeline {
        }
         }
         }
-    }
+    
     stage ('Checkout K8S manifest SCM') {
         steps {
             git credentialsId: '4a313cc0-0775-4139-83df-05384f27d375',
@@ -39,4 +39,5 @@ pipeline {
             branch: 'main'
         }
     }
+}
 }
