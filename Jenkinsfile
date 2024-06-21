@@ -9,7 +9,7 @@ pipeline {
     stages {
         stage ('checkout') {
             steps {
-                git credentialsId: '4a313cc0-0775-4139-83df-05384f27d375',
+                git credentialsId: 'd5be0348-6145-4239-802f-fb1025e25860',
                 url: 'https://github.com/gowri9493/cicd-end-to-end.git',
                 branch: 'main'
             }
@@ -34,7 +34,7 @@ pipeline {
     
     stage ('Checkout K8S manifest SCM') {
         steps {
-            git credentialsId: '4a313cc0-0775-4139-83df-05384f27d375',
+            git credentialsId: 'd5be0348-6145-4239-802f-fb1025e25860',
             url: 'https://github.com/gowri9493/cicd-demo-manifests-repo.git',
             branch: 'main'
         }
@@ -42,7 +42,7 @@ pipeline {
         stage ('update K8S manifest and push to repo') {
             steps {
                 script {
-                    withCredentials([usernamePassword(credentialsId: '4a313cc0-0775-4139-83df-05384f27d375', passwordVariable: 'GIT_PASSWORD',
+                    withCredentials([usernamePassword(credentialsId: 'd5be0348-6145-4239-802f-fb1025e25860', passwordVariable: 'GIT_PASSWORD',
                     usernameVariable: 'GIT_USERNAME' )]) {
                     sh '''
                         cat deploy.yaml
