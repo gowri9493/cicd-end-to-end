@@ -21,8 +21,10 @@ pipeline {
         }
     }
     stage ('Push artifacts to registry') {
+        steps {
         echo 'Push to repo'
         sh ' docker push gowri9493/cicd-e2e:${BUILD_NUMBER} .'
+        }
     }
     }
 }
