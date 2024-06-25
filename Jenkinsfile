@@ -3,7 +3,7 @@ pipeline {
     
     environment {
         IMAGE_TAG = "${BUILD_NUMBER}" 
-        DOCKERHUB_CREDENTIALS = credentials('dockerhub')
+        DOCKERHUB_CREDENTIALS = credentials["1b36eb31-0bec-4739-a402-2a035073ff53"] 
             }
 
             stages {
@@ -14,5 +14,14 @@ pipeline {
                         branch: "main"
                     }
                 }
+
+                stage ('BUILD_IMAGE') {
+                    steps {
+                        echo 'build docker image'
+                        sh 'docker build -t gowri9493/cicd-e2e:${IMAGE_TAG} .'
+                    }
+
+                }
+
             }
 }
