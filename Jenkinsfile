@@ -54,6 +54,9 @@ pipeline {
                                 ls -l deploy.yaml
                                 sed -i "s/gowri9493\\/cicd-e2e:v1/gowri9493\\/cicd-e2e:${IMAGE_TAG}/g" deploy.yaml
                                 cat deploy.yaml
+
+                                git config --global user.email "gowrishankarallada@gmail.com"
+                                git config --global user.name "gowri"
                                 git add deploy.yaml
                                 git commit -m 'Updated the deploy yaml | Jenkins Pipeline'
                                 git remote -v
