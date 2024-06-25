@@ -34,11 +34,12 @@ pipeline {
                     }
                 }
 
-                stage ('checkout K8S manifest SCM')
+                stage ('checkout K8S manifest SCM') {
                 steps {
                     git credentialsId: "githubcredentials",
                     url: "https://github.com/gowri9493/cicd-end-to-end.git",
                     branch: "main"
+                }
                 }
 
             }
