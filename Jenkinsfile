@@ -48,7 +48,7 @@ pipeline {
                             withCredentials([usernamePassword(credentialsId: 'githubcredentials', passwordVariable: 'GIT_TOKEN',
                             usernameVariable: 'GIT_USERNAME')]) {
                         
-                            }
+                            
                                 sh '''
                                 cat deploy.yaml
                                 ls -l deploy.yaml
@@ -62,6 +62,7 @@ pipeline {
                                 git remote -v
                                 git push https://${GIT_USERNAME}:${GIT_TOKEN}@github.com/gowri9493/cicd-demo-manifests-repo.git HEAD:main
                                  ''' 
+                            }
 
                             }
                         }
