@@ -10,8 +10,8 @@ pipeline {
     stages {
         stage ('code checkout') {
             steps {
-              git credentialId: "githubcred",
-              giturl: "https://github.com/gowri9493/cicd-end-to-end.git",
+              git credentialsId: "githubcred",
+              url: "https://github.com/gowri9493/cicd-end-to-end.git",
               branch: "main"
                
             }
