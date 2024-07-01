@@ -2,7 +2,7 @@ pipeline {
     agent any 
     
     Environmentvariables {
-        DOCKERHUB_CREDENTIALS = credentials('dockerhub') ,
+        DOCKERHUB_CREDENTIALS = credentials{'dockerhub'}
         IMAGE_TAG = "${BUILD_NUMBER}"
         
     }
