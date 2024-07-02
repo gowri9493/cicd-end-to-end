@@ -30,7 +30,9 @@ pipeline {
                         }
                     }
                     echo 'push to registry'
+                    set -x
                     sh 'docker push gowri9493/cicd-e2e:${IMAGE_TAG}'
+                    set +x
                 }
             }
 
