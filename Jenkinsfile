@@ -52,7 +52,7 @@ pipeline {
                                 sh '''
                                 cat deploy.yaml
                                 ls -l deploy.yaml
-                                sed -i "s/gowri9493\\/cicd-e2e:v1/gowri9493\\/cicd-e2e:${"IMAGE_TAG"}/g" deploy.yaml
+                                sed -i "s/gowri9493\\/cicd-e2e:v1/gowri9493\\/cicd-e2e:${IMAGE_TAG}/g" deploy.yaml
                                 cat deploy.yaml
                                 git add deploy.yaml
                                 git commit -m 'Updated the deploy.yaml | jenkins Pipeline'
