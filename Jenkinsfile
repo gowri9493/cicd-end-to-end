@@ -48,7 +48,7 @@ pipeline {
                     steps {
                         script {
                             withCredentials ([UsernamePassword( credentialsId: 'githubcred', passwordVariable: 'GIT_TOKEN',
-                            usernameVariable: 'GIT-USERNAME')]) {
+                            usernameVariable: 'GIT-USERNAME')]) 
                                 sh '''
                                 cat deploy.yaml
                                 ls -l deploy.yaml
