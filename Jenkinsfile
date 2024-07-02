@@ -37,9 +37,11 @@ pipeline {
             }
             
             stage ('checkout K8s manifest') {
+                steps {
                 git credentialsId: "githubcred",
                 url: "https://github.com/gowri9493/cicd-demo-manifests-repo.git",
                 branch: "main"
+                }
             }
 
         }
