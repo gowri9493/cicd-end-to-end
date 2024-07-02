@@ -2,7 +2,7 @@ pipeline {
     agent any 
     
     environment {
-        DOCKERHUB_CREDENTIALS = credentials('dockerhub') 
+        DOCKERHUB_CREDENTIALS = credentials('0706e217-7191-4f12-aa04-4cec85ea558f') 
         IMAGE_TAG = "${BUILD_NUMBER}"
         
     }
@@ -25,7 +25,7 @@ pipeline {
             stage ('push artifacts to dockerhub registry') {
                 steps {
                     script {
-                        docker.withRegistry('https://index.docker.io/v1/', 'dockerhub') {
+                        docker.withRegistry('https://index.docker.io/v1/', '0706e217-7191-4f12-aa04-4cec85ea558f') {
 
                         }
                     }
