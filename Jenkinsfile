@@ -42,10 +42,35 @@ pipeline {
                 url: "https://github.com/gowri9493/cicd-demo-manifests-repo.git",
                 branch: "main"
                 }
+                }
+
+                stage ('update K8s manifest and push to repo') {
+                    steps {
+                        script {
+                            withcredentials ([usernamePassword( credentialsId: 'githubcred', passwordVariable: 'GIT_TOKEN',
+                            usernameVariable: 'GIT-USERNAME')]) {
+                                sh '''
+                                cat deploy.yaml
+                                ls -l deploy.yaml
+                                sed -i "s/gowri9493\\/cicd-e2e:v1/gowri9493\\/cicd-e2e:${"IMAGE_TAG"}/g" deploy.yaml
+                                cat deploy.yaml
+                                git add deploy.yaml
+                                git commit -m 'Updated the deploy.yaml | jenkins Pipeline'
+                                git remote -v
+                                git push https://${GIT_USERNAME}:${GIT_TOKEN}@github.com/gowri9493/cicd-demo-manifests-repo.git HEAD:main
+                                '''
+
+                            }
+                        }
+                    }
+                }
+
+
             }
+
 
         }
 
-    }
+    
 
 
